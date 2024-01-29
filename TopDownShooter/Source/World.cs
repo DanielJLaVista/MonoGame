@@ -1,22 +1,23 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+using Microsoft.Xna.Framework;
 namespace TopDownShooter.Source.Engine
 {
     public class World
     {
-        public World(){
+        Basic2d hero;
 
+        public World()
+        {
+            hero = new Basic2d("Hero", new Vector2(300, 300), new Vector2(48, 48));
         }
 
-        public virtual void Update(){
-
+        public virtual void Update()
+        {
+            hero.Update();
         }
 
-        public virtual void Draw(){
-
+        public virtual void Draw()
+        {
+            hero.Draw();
         }
     }
 }
