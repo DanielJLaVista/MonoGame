@@ -8,6 +8,7 @@ namespace TopDownShooter {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         World world;
+        Basic2d cursor;
 
         public Main() {
             _graphics = new GraphicsDeviceManager(this);
@@ -24,7 +25,10 @@ namespace TopDownShooter {
         protected override void LoadContent() {
             Globals.content = this.Content;
             Globals._spriteBatch = new SpriteBatch(GraphicsDevice);
+            cursor = new Basic2d("2d/Misc/CursorArrow", new Vector2(0, 0), new Vector2(28, 28));
             Globals.keyboard = new McKeyboard();
+            Globals.mouse = new McMouseControl();
+
             world = new World();
             // TODO: use this.Content to load your game content here
         }
@@ -35,9 +39,13 @@ namespace TopDownShooter {
 
             // TODO: Add your update logic here
             Globals.keyboard.Update();
+            Globals.mouse.Update();
 
             world.Update();
+
             Globals.keyboard.UpdateOld();
+            Globals.mouse.UpdateOld();
+
             base.Update(gameTime);
 
         }
@@ -46,7 +54,9 @@ namespace TopDownShooter {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             Globals._spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
             // TODO: Add your drawing code here
-            world.Draw();
+            world.Draw(Vector2.Zero);
+
+            cursor.Draw(new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(0, 0));
             Globals._spriteBatch.End();
             base.Draw(gameTime);
         }

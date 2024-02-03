@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace TopDownShooter {
     public class Basic2d {
+        public float rot;
         public Vector2 pos, dims;
         public Texture2D model;
         public Basic2d(string path, Vector2 pos, Vector2 dims) {
@@ -15,9 +16,14 @@ namespace TopDownShooter {
 
         }
 
-        public virtual void Draw() {
+        public virtual void Draw(Vector2 offset) {
             if (model != null) {
-                Globals._spriteBatch.Draw(model, new Rectangle((int)pos.X, (int)pos.Y, (int)dims.X, (int)dims.Y), null, Color.White, 0.0f, new Microsoft.Xna.Framework.Vector2(model.Bounds.Width / 2, model.Bounds.Height / 2), new SpriteEffects(), 0);
+                Globals._spriteBatch.Draw(model, new Rectangle((int)(pos.X + offset.X), (int)(pos.Y + offset.Y), (int)dims.X, (int)dims.Y), null, Color.White, rot, new Microsoft.Xna.Framework.Vector2(model.Bounds.Width / 2, model.Bounds.Height / 2), new SpriteEffects(), 0);
+            }
+        }
+        public virtual void Draw(Vector2 offset, Vector2 origin) {
+            if (model != null) {
+                Globals._spriteBatch.Draw(model, new Rectangle((int)(pos.X + offset.X), (int)(pos.Y + offset.Y), (int)dims.X, (int)dims.Y), null, Color.White, rot, new Microsoft.Xna.Framework.Vector2(origin.X, origin.Y), new SpriteEffects(), 0);
             }
         }
     }

@@ -5,15 +5,15 @@ namespace TopDownShooter {
         Hero hero;
 
         public World() {
-            hero = new Hero("Hero", new Vector2(300, 300), new Vector2(48, 48));
+            hero = new Hero("2d/Hero", new Vector2(300, 300), new Vector2(48, 48));
         }
 
         public virtual void Update() {
             hero.Update();
         }
 
-        public virtual void Draw() {
-            hero.Draw();
+        public virtual void Draw(Vector2 offset) {
+            hero.Draw(offset);
         }
     }
 }
