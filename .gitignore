@@ -11,6 +11,8 @@
 *.suo
 *.user
 *.sln.docstates
+*.mgstats
+.mgstats
 
 # Build results
 [Dd]ebug/
