@@ -19,3 +19,6 @@
 #begin 2d/Misc/CursorArrow.xnb
 /copy:2d/Misc/CursorArrow.xnb
 
+#begin 2d/Projectiles/Fireball.xnb
+/copy:2d/Projectiles/Fireball.xnb
+
