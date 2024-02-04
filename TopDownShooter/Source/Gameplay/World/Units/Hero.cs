@@ -11,7 +11,7 @@ namespace TopDownShooter {
             speed = 2.0f;
         }
 
-        public override void Update() {
+        public override void Update(Vector2 offset) {
             if (Globals.keyboard.GetPress ("A")) {
                 pos = new Vector2 (pos.X - speed, pos.Y);
             }
@@ -29,7 +29,7 @@ namespace TopDownShooter {
             if (Globals.mouse.LeftClick ()) {
                 GameGlobals.PassProjectile (new Fireball (new Vector2 (pos.X, pos.Y), this, new Vector2 (Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y)));
             }
-            base.Update ();
+            base.Update (offset);
         }
 
         public override void Draw(Vector2 offset) {

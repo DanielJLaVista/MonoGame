@@ -1,3 +1,3 @@
 ﻿
-using var game = new TopDownShooter.Main();
-game.Run();
+using var game = new TopDownShooter.Main ();
+game.Run ();

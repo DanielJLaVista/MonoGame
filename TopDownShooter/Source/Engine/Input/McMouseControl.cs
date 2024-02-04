@@ -24,15 +24,15 @@ namespace TopDownShooter {
         public McMouseControl() {
             dragging = false;
 
-            newMouse = Mouse.GetState();
+            newMouse = Mouse.GetState ();
             oldMouse = newMouse;
             firstMouse = newMouse;
 
-            newMousePos = new Vector2(newMouse.Position.X, newMouse.Position.Y);
-            oldMousePos = new Vector2(newMouse.Position.X, newMouse.Position.Y);
-            firstMousePos = new Vector2(newMouse.Position.X, newMouse.Position.Y);
+            newMousePos = new Vector2 (newMouse.Position.X, newMouse.Position.Y);
+            oldMousePos = new Vector2 (newMouse.Position.X, newMouse.Position.Y);
+            firstMousePos = new Vector2 (newMouse.Position.X, newMouse.Position.Y);
 
-            GetMouseAndAdjust();
+            GetMouseAndAdjust ();
 
             //screenLoc = new Vector2((int)(systemCursorPos.X/Globals.screenWidth), (int)(systemCursorPos.Y/Globals.screenHeight));
 
@@ -55,12 +55,12 @@ namespace TopDownShooter {
         #endregion
 
         public void Update() {
-            GetMouseAndAdjust();
+            GetMouseAndAdjust ();
 
 
             if (newMouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed && oldMouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Released) {
                 firstMouse = newMouse;
-                firstMousePos = newMousePos = GetScreenPos(firstMouse);
+                firstMousePos = newMousePos = GetScreenPos (firstMouse);
             }
 
 
@@ -68,16 +68,16 @@ namespace TopDownShooter {
 
         public void UpdateOld() {
             oldMouse = newMouse;
-            oldMousePos = GetScreenPos(oldMouse);
+            oldMousePos = GetScreenPos (oldMouse);
         }
 
         public virtual float GetDistanceFromClick() {
-            return Globals.GetDistance(newMousePos, firstMousePos);
+            return Globals.GetDistance (newMousePos, firstMousePos);
         }
 
         public virtual void GetMouseAndAdjust() {
-            newMouse = Mouse.GetState();
-            newMousePos = GetScreenPos(newMouse);
+            newMouse = Mouse.GetState ();
+            newMousePos = GetScreenPos (newMouse);
 
         }
 
@@ -90,7 +90,7 @@ namespace TopDownShooter {
 
 
         public Vector2 GetScreenPos(MouseState MOUSE) {
-            Vector2 tempVec = new Vector2(MOUSE.Position.X, MOUSE.Position.Y);
+            Vector2 tempVec = new Vector2 (MOUSE.Position.X, MOUSE.Position.Y);
 
 
             return tempVec;
@@ -110,7 +110,7 @@ namespace TopDownShooter {
             if (newMouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed && oldMouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.screenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.screenHeight) {
                 holding = true;
 
-                if (Math.Abs(newMouse.Position.X - firstMouse.Position.X) > 8 || Math.Abs(newMouse.Position.Y - firstMouse.Position.Y) > 8) {
+                if (Math.Abs (newMouse.Position.X - firstMouse.Position.X) > 8 || Math.Abs (newMouse.Position.Y - firstMouse.Position.Y) > 8) {
                     dragging = true;
                 }
             }
@@ -143,7 +143,7 @@ namespace TopDownShooter {
             if (newMouse.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed && oldMouse.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.screenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.screenHeight) {
                 holding = true;
 
-                if (Math.Abs(newMouse.Position.X - firstMouse.Position.X) > 8 || Math.Abs(newMouse.Position.Y - firstMouse.Position.Y) > 8) {
+                if (Math.Abs (newMouse.Position.X - firstMouse.Position.X) > 8 || Math.Abs (newMouse.Position.Y - firstMouse.Position.Y) > 8) {
                     rightDrag = true;
                 }
             }

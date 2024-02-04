@@ -11,62 +11,62 @@ namespace TopDownShooter {
         Basic2d cursor;
 
         public Main() {
-            _graphics = new GraphicsDeviceManager(this);
+            _graphics = new GraphicsDeviceManager (this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
 
         protected override void Initialize() {
             // TODO: Add your initialization logic here
-            Globals.screenHeight = 800; //1600
-            Globals.screenWidth = 500; //900
+            Globals.screenHeight = 500; //900
+            Globals.screenWidth = 800;  //1600
 
             _graphics.PreferredBackBufferWidth = Globals.screenWidth;
             _graphics.PreferredBackBufferHeight = Globals.screenHeight;
 
-            _graphics.ApplyChanges();
+            _graphics.ApplyChanges ();
 
-            base.Initialize();
+            base.Initialize ();
         }
 
         protected override void LoadContent() {
             Globals.content = this.Content;
-            Globals._spriteBatch = new SpriteBatch(GraphicsDevice);
-            cursor = new Basic2d("2d/Misc/CursorArrow", new Vector2(0, 0), new Vector2(28, 28));
-            Globals.keyboard = new McKeyboard();
-            Globals.mouse = new McMouseControl();
+            Globals._spriteBatch = new SpriteBatch (GraphicsDevice);
+            cursor = new Basic2d ("2d/Misc/CursorArrow", new Vector2 (0, 0), new Vector2 (28, 28));
+            Globals.keyboard = new McKeyboard ();
+            Globals.mouse = new McMouseControl ();
 
-            world = new World();
+            world = new World ();
             // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime) {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            if (GamePad.GetState (PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState ().IsKeyDown (Keys.Escape))
+                Exit ();
 
             // TODO: Add your update logic here
             Globals.gameTime = gameTime;
-            Globals.keyboard.Update();
-            Globals.mouse.Update();
+            Globals.keyboard.Update ();
+            Globals.mouse.Update ();
 
-            world.Update();
+            world.Update ();
 
-            Globals.keyboard.UpdateOld();
-            Globals.mouse.UpdateOld();
+            Globals.keyboard.UpdateOld ();
+            Globals.mouse.UpdateOld ();
 
-            base.Update(gameTime);
+            base.Update (gameTime);
 
         }
 
         protected override void Draw(GameTime gameTime) {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-            Globals._spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            GraphicsDevice.Clear (Color.CornflowerBlue);
+            Globals._spriteBatch.Begin (SpriteSortMode.Deferred, BlendState.AlphaBlend);
             // TODO: Add your drawing code here
-            world.Draw(Vector2.Zero);
+            world.Draw (Vector2.Zero);
 
-            cursor.Draw(new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(0, 0));
-            Globals._spriteBatch.End();
-            base.Draw(gameTime);
+            cursor.Draw (new Vector2 (Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2 (0, 0));
+            Globals._spriteBatch.End ();
+            base.Draw (gameTime);
         }
     }
 }

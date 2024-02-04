@@ -13,12 +13,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin 2d/Hero.xnb
-/copy:2d/Hero.xnb
+#begin 2d/Misc/circle.xnb
+/copy:2d/Misc/circle.xnb
 
 #begin 2d/Misc/CursorArrow.xnb
 /copy:2d/Misc/CursorArrow.xnb
 
 #begin 2d/Projectiles/Fireball.xnb
 /copy:2d/Projectiles/Fireball.xnb
+
+#begin 2d/Units/Hero.xnb
+/copy:2d/Units/Hero.xnb
+
+#begin 2d/Units/Mobs/Imp.xnb
+/copy:2d/Units/Mobs/Imp.xnb
 

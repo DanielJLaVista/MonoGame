@@ -9,24 +9,24 @@ namespace TopDownShooter {
 
         public KeyboardState newKeyboard, oldKeyboard;
 
-        public List<McKey> pressedKeys = new List<McKey>(), previousPressedKeys = new List<McKey>();
+        public List<McKey> pressedKeys = new List<McKey> (), previousPressedKeys = new List<McKey> ();
 
         public McKeyboard() {
 
         }
 
         public virtual void Update() {
-            newKeyboard = Keyboard.GetState();
+            newKeyboard = Keyboard.GetState ();
 
-            GetPressedKeys();
+            GetPressedKeys ();
         }
 
         public void UpdateOld() {
             oldKeyboard = newKeyboard;
 
-            previousPressedKeys = new List<McKey>();
+            previousPressedKeys = new List<McKey> ();
             for (int i = 0; i < pressedKeys.Count; i++) {
-                previousPressedKeys.Add(pressedKeys[i]);
+                previousPressedKeys.Add (pressedKeys[i]);
             }
         }
 
@@ -44,9 +44,9 @@ namespace TopDownShooter {
         public virtual void GetPressedKeys() {
             bool found = false;
 
-            pressedKeys.Clear();
-            for (int i = 0; i < newKeyboard.GetPressedKeys().Length; i++) {
-                pressedKeys.Add(new McKey(newKeyboard.GetPressedKeys()[i].ToString(), 1));
+            pressedKeys.Clear ();
+            for (int i = 0; i < newKeyboard.GetPressedKeys ().Length; i++) {
+                pressedKeys.Add (new McKey (newKeyboard.GetPressedKeys ()[i].ToString (), 1));
 
             }
         }
