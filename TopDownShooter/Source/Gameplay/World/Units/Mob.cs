@@ -19,6 +19,11 @@ namespace TopDownShooter {
         public virtual void AI(Hero hero) {
             pos += Globals.RadialMovement (hero.pos, pos, speed);
             rot = Globals.RotateTowards (pos, hero.pos);
+
+            if (Globals.GetDistance (pos, hero.pos) < 25) {
+                hero.GetHit (1);
+                dead = true;
+            }
         }
         public override void Draw(Vector2 offset) {
             base.Draw (offset);

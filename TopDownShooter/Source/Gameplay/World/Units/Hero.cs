@@ -9,6 +9,8 @@ namespace TopDownShooter {
     public class Hero : Unit {
         public Hero(string path, Vector2 pos, Vector2 dims) : base (path, pos, dims) {
             speed = 2.0f;
+            health = 5;
+            healthMax = health;
         }
 
         public override void Update(Vector2 offset) {

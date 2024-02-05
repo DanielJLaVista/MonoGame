@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 namespace TopDownShooter {
     public class World {
         public Vector2 offset;
-        Hero hero;
+        public Hero hero;
         public List<Projectile2d> projectiles = new List<Projectile2d> ();
         public List<Mob> mobs = new List<Mob> ();
         public List<SpawnPoint> spawnPoints = new List<SpawnPoint> ();

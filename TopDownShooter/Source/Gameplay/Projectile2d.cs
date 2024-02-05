@@ -36,7 +36,7 @@ namespace TopDownShooter {
         public virtual bool HitSomething(List<Unit> units) {
             for (int i = 0; i < units.Count; i++) {
                 if (Globals.GetDistance (pos, units[i].pos) < units[i].hitDist) {
-                    units[i].GetHit ();
+                    units[i].GetHit (1);
                     return true;
                 }
             }
