@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -19,6 +20,7 @@ namespace TopDownShooter {
 
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassMob = AddMob;
+            GameGlobals.CheckScroll = CheckScroll;
             offset = new Vector2 (0, 0);
 
             spawnPoints.Add (new SpawnPoint ("2d/Misc/circle", new Vector2 (50, 50), new Vector2 (35, 35)));
@@ -58,17 +60,31 @@ namespace TopDownShooter {
         public virtual void AddProjectile(object info) {
             projectiles.Add ((Projectile2d)info);
         }
-
+        public virtual void CheckScroll(Object info) {
+            Vector2 tempPos = (Vector2)info;
+            if (tempPos.X < -offset.X + (Globals.screenWidth * 0.4f)) {
+                offset = new Vector2 (offset.X + hero.speed * 2, offset.Y);
+            }
+            if (tempPos.X > -offset.X + (Globals.screenWidth * 0.6f)) {
+                offset = new Vector2 (offset.X - hero.speed * 2, offset.Y);
+            }
+            if (tempPos.Y < -offset.Y + (Globals.screenHeight * 0.4f)) {
+                offset = new Vector2 (offset.X, offset.Y + hero.speed * 2);
+            }
+            if (tempPos.Y > -offset.Y + (Globals.screenHeight * 0.6f)) {
+                offset = new Vector2 (offset.X, offset.Y - hero.speed * 2);
+            }
+        }
         public virtual void Draw(Vector2 offset) {
-            hero.Draw (offset);
+            hero.Draw (this.offset);
             for (int i = 0; i < spawnPoints.Count; i++) {
-                spawnPoints[i].Draw (offset);
+                spawnPoints[i].Draw (this.offset);
             }
             for (int i = 0; i < projectiles.Count; i++) {
-                projectiles[i].Draw (offset);
+                projectiles[i].Draw (this.offset);
             }
             for (int i = 0; i < mobs.Count; i++) {
-                mobs[i].Draw (offset);
+                mobs[i].Draw (this.offset);
 
             }
             ui.Draw (this);
