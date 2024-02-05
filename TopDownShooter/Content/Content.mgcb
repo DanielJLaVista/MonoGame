@@ -28,3 +28,30 @@
 #begin 2d/Units/Mobs/Imp.xnb
 /copy:2d/Units/Mobs/Imp.xnb
 
+#begin Fonts/Arial16.xnb
+/copy:Fonts/Arial16.xnb
+
+#begin Fonts/Arial20Bold.xnb
+/copy:Fonts/Arial20Bold.xnb
+
+#begin Fonts/Arial24.xnb
+/copy:Fonts/Arial24.xnb
+
+#begin Fonts/Lindsey13.xnb
+/copy:Fonts/Lindsey13.xnb
+
+#begin Fonts/Lindsey15.xnb
+/copy:Fonts/Lindsey15.xnb
+
+#begin Fonts/Lindsey16.xnb
+/copy:Fonts/Lindsey16.xnb
+
+#begin Fonts/Lindsey17.xnb
+/copy:Fonts/Lindsey17.xnb
+
+#begin Fonts/Lindsey18.xnb
+/copy:Fonts/Lindsey18.xnb
+
+#begin Fonts/Lindsey20.xnb
+/copy:Fonts/Lindsey20.xnb
+
