@@ -7,7 +7,7 @@ namespace TopDownShooter {
     public class Main : Game {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        World world;
+        GamePlay gamePlay;
         Basic2d cursor;
 
         public Main() {
@@ -36,7 +36,7 @@ namespace TopDownShooter {
             Globals.keyboard = new McKeyboard ();
             Globals.mouse = new McMouseControl ();
 
-            world = new World ();
+            gamePlay = new GamePlay ();
             // TODO: use this.Content to load your game content here
         }
 
@@ -49,7 +49,7 @@ namespace TopDownShooter {
             Globals.keyboard.Update ();
             Globals.mouse.Update ();
 
-            world.Update ();
+            gamePlay.Update ();
 
             Globals.keyboard.UpdateOld ();
             Globals.mouse.UpdateOld ();
@@ -63,7 +63,7 @@ namespace TopDownShooter {
             GraphicsDevice.Clear (Color.CornflowerBlue);
             Globals._spriteBatch.Begin (SpriteSortMode.Deferred, BlendState.AlphaBlend);
             // TODO: Add your drawing code here
-            world.Draw (Vector2.Zero);
+            gamePlay.Draw ();
 
             cursor.Draw (new Vector2 (Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2 (0, 0), Color.White);
             Globals._spriteBatch.End ();

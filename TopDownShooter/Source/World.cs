@@ -13,8 +13,9 @@ namespace TopDownShooter {
         public List<SpawnPoint> spawnPoints = new List<SpawnPoint> ();
         public int numKilled;
         public UI ui;
-
-        public World() {
+        PassObject ResetWorld;
+        public World(PassObject ResetWorld) {
+            this.ResetWorld = ResetWorld;
             numKilled = 0;
             hero = new Hero ("2d/Units/Hero", new Vector2 (300, 300), new Vector2 (48, 48));
 
@@ -33,22 +34,28 @@ namespace TopDownShooter {
 
         public virtual void Update() {
             hero.Update (offset);
-            for (int i = 0; i < spawnPoints.Count; i++) {
-                spawnPoints[i].Update (offset);
-            }
-            for (int i = 0; i < projectiles.Count; i++) {
-                projectiles[i].Update (offset, mobs.ToList<Unit> ());
-                if (projectiles[i].done) {
-                    projectiles.RemoveAt (i);
-                    i--;
+            if (!hero.dead) {
+                for (int i = 0; i < spawnPoints.Count; i++) {
+                    spawnPoints[i].Update (offset);
                 }
-            }
-            for (int i = 0; i < mobs.Count; i++) {
-                mobs[i].Update (offset, hero);
-                if (mobs[i].dead) {
-                    numKilled++;
-                    mobs.RemoveAt (i);
-                    i--;
+                for (int i = 0; i < projectiles.Count; i++) {
+                    projectiles[i].Update (offset, mobs.ToList<Unit> ());
+                    if (projectiles[i].done) {
+                        projectiles.RemoveAt (i);
+                        i--;
+                    }
+                }
+                for (int i = 0; i < mobs.Count; i++) {
+                    mobs[i].Update (offset, hero);
+                    if (mobs[i].dead) {
+                        numKilled++;
+                        mobs.RemoveAt (i);
+                        i--;
+                    }
+                }
+            } else {
+                if (Globals.keyboard.GetPress ("Enter")) {
+                    ResetWorld (null);
                 }
             }
             ui.Update (this);

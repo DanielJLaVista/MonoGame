@@ -24,6 +24,12 @@ namespace TopDownShooter {
             Vector2 tempStrDims = font.MeasureString (tempStr);
             Globals._spriteBatch.DrawString (font, tempStr, new Vector2 (Globals.screenWidth / 2 - tempStrDims.X / 2, Globals.screenHeight - 40), Color.Black);
             healthBar.Draw (new Vector2 (20, Globals.screenHeight - 40));
+
+            if (world.hero.dead) {
+                tempStr = "Press Enter to Restart";
+                tempStrDims = font.MeasureString (tempStr);
+                Globals._spriteBatch.DrawString (font, tempStr, new Vector2 (Globals.screenWidth / 2 - tempStrDims.X / 2, Globals.screenHeight / 2), Color.Black);
+            }
         }
     }
 }
