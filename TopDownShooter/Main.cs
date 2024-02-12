@@ -54,6 +54,7 @@ namespace TopDownShooter {
             Globals.keyboard.UpdateOld ();
             Globals.mouse.UpdateOld ();
 
+            //This resets elapsed game time
             base.Update (gameTime);
 
         }

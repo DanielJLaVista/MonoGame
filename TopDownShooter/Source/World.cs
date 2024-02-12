@@ -26,9 +26,9 @@ namespace TopDownShooter {
 
             spawnPoints.Add (new SpawnPoint ("2d/Misc/circle", new Vector2 (50, 50), new Vector2 (35, 35)));
             spawnPoints.Add (new SpawnPoint ("2d/Misc/circle", new Vector2 (Globals.screenWidth / 2, 50), new Vector2 (35, 35)));
-            spawnPoints.Last ().spawnTimer.AddToTimer (500);
+            spawnPoints.Last ().spawnTimer.AddTime (500);
             spawnPoints.Add (new SpawnPoint ("2d/Misc/circle", new Vector2 (Globals.screenWidth - 50, 50), new Vector2 (35, 35)));
-            spawnPoints.Last ().spawnTimer.AddToTimer (1000);
+            spawnPoints.Last ().spawnTimer.AddTime (1000);
             ui = new UI ();
         }
 

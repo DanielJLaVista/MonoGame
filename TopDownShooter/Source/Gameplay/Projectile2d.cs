@@ -12,19 +12,19 @@ namespace TopDownShooter {
         public float speed;
         public Unit owner;
         public Vector2 direction;
-        public McTimer timer;
+        public TimeCounter timer;
         public Projectile2d(string path, Vector2 pos, Vector2 dims, Unit owner, Vector2 target) : base (path, pos, dims) {
             done = false;
             speed = 5.0f;
             this.owner = owner;
             direction = target - owner.pos;
             direction.Normalize ();
-            timer = new McTimer (1200);
+            timer = new TimeCounter (1200);
         }
         public virtual void Update(Vector2 offset, List<Unit> units) {
             pos += direction * speed;
-            timer.UpdateTimer ();
-            if (timer.Test ()) {
+            timer.AddElapsedGameTime ();
+            if (timer.goalTimeIsMet ()) {
                 done = true;
             }
 

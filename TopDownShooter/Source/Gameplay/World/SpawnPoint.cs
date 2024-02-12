@@ -10,7 +10,7 @@ namespace TopDownShooter {
         public bool dead;
         public float hitDist;
 
-        public McTimer spawnTimer = new McTimer (2200);
+        public TimeCounter spawnTimer = new TimeCounter (2200);
 
         public float speed;
         public SpawnPoint(string path, Vector2 pos, Vector2 dims) : base (path, pos, dims) {
@@ -19,8 +19,8 @@ namespace TopDownShooter {
         }
 
         public override void Update(Vector2 offset) {
-            spawnTimer.UpdateTimer ();
-            if (spawnTimer.Test ()) {
+            spawnTimer.AddElapsedGameTime ();
+            if (spawnTimer.goalTimeIsMet ()) {
                 SpawnMob ();
                 spawnTimer.ResetToZero ();
             };
